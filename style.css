@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'StratosSkyeng', sans-serif;
+    background-color: #0F0804;
+    line-height: 1.6;
+}
+
+.header {
+    height: 100vh;
+    background-image: url(images/13.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.header__overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 80.49%, #0F0804 100%);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.header__title {
+    margin: auto;
+    font-size: 96px;
+    text-align: center;
+    color: white;
+    max-width: 658px;
+    font-weight: 400;
+    padding: 20px;
+}
+
+.header__link {
+    height: 90px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.17);
+    backdrop-filter: blur(11.5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__link:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.header__anchor {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery {
+    list-style-type: none;
+    margin: 173px auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    width: 90%;
+    justify-content: center;
+}
+
+.gallery__item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    height: 0;
+    padding-bottom: 150%;
+    cursor: pointer;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+/* Затемнение - выше изображения, но ниже текста */
+.gallery__item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+/* Текст - самый верхний слой */
+.gallery__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    z-index: 4;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: 80%;
+    pointer-events: none;
+}
+
+/* Кнопки - теперь всегда видимы */
+.image__actions {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+    z-index: 3;
+    transition: opacity 0.3s ease;
+    pointer-events: auto; /* Кнопки сразу кликабельны */
+}
+
+/* Эффекты при наведении */
+.gallery__item:hover .image {
+    transform: scale(1.05);
+}
+
+.gallery__item:hover::after {
+    opacity: 1;
+}
+
+.gallery__item:hover .gallery__text {
+    opacity: 1;
+}
+
+/* Убираем изменение opacity для кнопок при наведении */
+/* .gallery__item:hover .image__actions {
+    opacity: 1;
+} */
+
+.steam-train-btn, .steam-train-btn-2 {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+}
+
+.steam-train-btn::before, .steam-train-btn-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 0.3s ease;
+}
+
+.steam-train-btn:hover::before, .steam-train-btn-2:hover::before {
+    opacity: 0;
+}
+
+.steam-train-btn::after, .steam-train-btn-2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.steam-train-btn:hover::after, .steam-train-btn-2:hover::after {
+    opacity: 1;
+}
+
+.steam-train-btn::before { background-image: url('images/Union.svg'); }
+.steam-train-btn::after { background-image: url('images/23.svg'); }
+.steam-train-btn-2::before { background-image: url('images/Rectangle 11.svg'); }
+.steam-train-btn-2::after { background-image: url('images/Rectangle 14.svg'); }
+
+.footer {
+  height: 100vh;
+  min-height: 500px;
+  background-image: url('./images/7.png');
+  background-color: #2c3e50;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    height: auto;
+    min-height: 300px;
+    background-attachment: scroll;
+    background-position: 50% 20%;
+  }
+}
+
+
+.footer__overlay {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, #0F0804 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.footer__text {
+    margin: auto;
+    font-size: 40px;
+    color: white;
+}
+
+
+
+
+
